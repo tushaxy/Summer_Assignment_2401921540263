@@ -1,0 +1,27 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int maxVol = 0;
+        int i = 0;
+        int j = height.length - 1;
+        
+        while (i < j) {
+            int currentWidth = j - i;
+            int currentHeight;
+            
+            if (height[i] < height[j]) {
+                currentHeight = height[i];
+                i++;
+            } else {
+                currentHeight = height[j];
+                j--;
+            }
+            
+            int area = currentWidth * currentHeight;
+            if (area > maxVol) {
+                maxVol = area;
+            }
+        }
+        
+        return maxVol;
+    }
+}
